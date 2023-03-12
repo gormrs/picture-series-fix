@@ -1,13 +1,10 @@
-// TODO: bare aktiveres når man trykker på extension ikonet
-// gjør den bare gyldig på nrk sider
-
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    console.log(message);
+    
     // message.message gets the string from popup.js
     if (message.message === 'modify_article') {
-    console.log('modify-button');
-    // Do something with the message data here
+    
+    
     
     // Get all img elements on the page
     const images = document.querySelectorAll('img');
@@ -21,12 +18,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     
     // Get all the article image elements
     const articleImageElements = document.querySelectorAll('.dhks-background img');
-    imageList = []
+    
     
     
     
     // Get all the article text elements, including the title
-    const articleTextElements = document.querySelectorAll('.dhks-card .dhks-text, .dhks-content, .dhks-title');
+    const articleTextElements = document.querySelectorAll('.dhks-card .dhks-text, .dhks-content, .dhks-title, .dhks-lead, .dhks-author__name, dhks-author__role, dhks-publish__date');
     
     // Create an empty array to store the image, title, and text objects
     const articleData = [];
@@ -41,7 +38,6 @@ articleTextElements.forEach((textElement, index) => {
     
     // Check if the data-card-index has reset to 0
     if (dataCardIndex === '0') {
-        // Increment the current index to move to the next image
         currentIndex++;
     }
     
