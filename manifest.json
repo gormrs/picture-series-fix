@@ -1,0 +1,32 @@
+{
+    "name": "My Extension",
+    "version": "1.0",
+    "manifest_version": 3,
+    "description": "Converts page content to an article.",
+    "icons": {
+      "128": "oil.png"
+    },
+    "background": {
+      "service_worker": "background.js",
+      "permissions": ["activeTab"]
+    },
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "oil.png",
+        "32": "oil.png",
+        "48": "oil.png",
+        "128": "oil.png"
+      }
+    },
+    "permissions": [
+      "activeTab"
+    ],
+    "content_scripts": [
+      {
+        "matches": ["http://*nrk.no*", "https://*nrk.no*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
