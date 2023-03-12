@@ -24,7 +24,7 @@
     ],
     "content_scripts": [
       {
-        "matches": ["http://*nrk.no*", "https://*nrk.no*"],
+        "matches": ["https://*.nrk.no/*", "http://*.nrk.no/*"],
         "js": ["content.js"]
       }
     ]
