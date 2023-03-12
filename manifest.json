@@ -2,7 +2,7 @@
     "name": "PicArticleFix",
     "version": "0.0.0.1",
     "manifest_version": 3,
-    "description": "Converts picture article page content to a normal article.",
+    "description": "Omgjør en bildeserie (fra NRK foreløpig) til en normal artikkel.",
     "icons": {
       "128": "PAF.png"
     },
