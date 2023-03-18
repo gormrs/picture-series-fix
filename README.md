@@ -2,12 +2,15 @@
 
 Chrome extensions that changes picture article from NRK (currently) to simple normal articles
 
+Chorme webstore:
+https://chrome.google.com/webstore/detail/picarticlefix/kgkaabedglfpocbpickbflcoejmmbeak
+
 tested on : https://www.nrk.no/norge/ibsens-skjulte-skattekammer-1.16329018
 https://www.nrk.no/osloogviken/sunshine-effekten-1.16329137
 
 Icon: Yllnor13
 
-To install:
+## To install:
 
 1. Pull the repo onto computer
 
@@ -20,3 +23,5 @@ To install:
 5. Now you can use it as any other extension in Chrome
 
 6. To use it, go to a picture article and press the extension icon
+
+7. Enjoy 
