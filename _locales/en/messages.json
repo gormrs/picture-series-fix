@@ -1,0 +1,10 @@
+{
+    "appName":{
+        "message" : "PicArticleFix",
+        "description" : "Convert a picture series (from NRK for now) into a regular article."
+    },
+    "appDesc": {
+        "message" : "Convert a picture series (from NRK for now) into a regular article.",
+        "description" : "Convert a picture series (from NRK for now) into a regular article."
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "appName":{
+        "message" : "PicArticleFix",
+        "description" : "Omgjør en bildeserie (fra NRK foreløpig) til en normal artikkel."
+    },
+    "appDesc": {
+        "message" : "Omgjør en bildeserie (fra NRK foreløpig) til en normal artikkel.",
+        "description" : "Omgjør en bildeserie (fra NRK foreløpig) til en normal artikkel."
+    }
+}
