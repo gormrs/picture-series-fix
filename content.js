@@ -61,13 +61,40 @@ articleTextElements.forEach((textElement, index) => {
 });
 
 
-
 // Create a new div element to hold the article
 const articleDiv = document.createElement('div');
 articleDiv.style.margin = '0 auto';
 articleDiv.style.maxWidth = '800px';
 articleDiv.style.padding = '30px';
 articleDiv.style.fontFamily = 'Arial, sans-serif';
+
+const topDiv = document.createElement('div');
+topDiv.style.display = 'flex';
+topDiv.style.justifyContent = 'space-between';
+topDiv.style.alignItems = 'center';
+topDiv.style.color = '#A9A9A9';
+
+topDiv.style.borderBottom = '1px solid #ccc';
+topDiv.style.paddingBottom = '30px';
+
+const profileDiv = document.createElement('div');
+profileDiv.style.display = 'flex';
+
+profileDiv.style.justifyContent = 'space-between';
+profileDiv.style.float = 'left';
+
+
+const profileImage = document.createElement('img');
+profileImage.src = 'https://thumbs2.imgbox.com/c3/65/2ewp5PM2_t.png';
+profileImage.style.width = '100px';
+profileImage.style.height = '100px';
+profileImage.style.borderRadius = '50%';
+profileImage.style.marginLeft = '10px';
+profileImage.style.marginTop = '10px';
+
+
+profileDiv.appendChild(profileImage);
+topDiv.appendChild(profileDiv);
 
 // Iterate through the article data and create HTML elements for each item
 articleData.forEach((item) => {
@@ -102,10 +129,13 @@ articleData.forEach((item) => {
     articleDiv.appendChild(itemDiv);
 });
 
+
+
 // Replace the page content with the article div
 const body = document.querySelector('body');
 body.innerHTML = '';
+body.appendChild(topDiv);
 body.appendChild(articleDiv);
     }
 });
-//commented here to test github upload
+
