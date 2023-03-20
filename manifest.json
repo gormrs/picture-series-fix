@@ -1,9 +1,9 @@
 {
-    "name": "PicArticleFix",
+    "name": "__MSG_appName__",
     "version": "0.0.0.1",
     "manifest_version": 3,
     "default_locale": "no",
-    "description": "Omgjør en bildeserie (fra NRK foreløpig) til en normal artikkel.",
+    "description": "__MSG_appDesc__",
     "icons": {
       "128": "PAF.png"
     },
