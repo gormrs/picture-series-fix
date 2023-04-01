@@ -16,10 +16,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     
     
     
-    // Get all the article image elements
-    const articleImageElements = document.querySelectorAll('.dhks-background img');
-    
-    
+    // Get all the article media elements
+    const articleMediaElements = document.querySelectorAll('.dhks-background img, .dhks-background > video:first-of-type');
+
+
     
     
     // Get all the article text elements, including the title
@@ -31,33 +31,58 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     // Initialize the current index to -1
 let currentIndex = -1;
 
+
+
 // Iterate through the text elements and extract the text content and data-card-index
 articleTextElements.forEach((textElement, index) => {
     // Get the data-card-index of the text element
     const dataCardIndex = textElement.parentElement.getAttribute('data-card-index');
-    
+
     // Check if the data-card-index has reset to 0
     if (dataCardIndex === '0') {
         currentIndex++;
+        console.log('Current Index:', currentIndex); // Debugging output
     }
+
+    // Get the corresponding media element and extract the src attribute
+    const mediaElement = articleMediaElements[currentIndex];
+
+    if (!mediaElement) {
+        console.warn(`No media element found for index ${currentIndex}`);
+        return;
+    }
+
+    const mediaSrc = mediaElement.tagName.toLowerCase() === 'img' ? mediaElement.currentSrc : mediaElement.querySelector('source[type="video/mp4"]').src;
+
     
-    // Get the corresponding image element and extract the src attribute
-    const imageSrc = articleImageElements[currentIndex].currentSrc;
+    console.log('Media Source:', mediaSrc); // Debugging output
+
     
     // Get the text content and store it in the articleData array
     const textContent = textElement.textContent.trim();
-    
+
     // If the current index in the articleData array does not exist yet,
-    // create it and push the object with imageSrc and textContent to it.
+    // create it and push the object with mediaSrc and textContent to it.
+    const mediaType = mediaElement.tagName.toLowerCase() === 'img' ? 'image' : mediaElement.tagName.toLowerCase() === 'video' ? 'video' : null;
+
+
     if (!articleData[currentIndex]) {
         articleData[currentIndex] = {
-            imageSrc,
-            textContent: [textContent]
+            mediaType,
+            mediaSrc,
+            textContent: [textContent || ''] // Add an empty string if textContent is falsy
         };
     } else {
-        // If the current index already exists, push the textContent to its existing array
-        articleData[currentIndex].textContent.push(textContent);
+        articleData[currentIndex].textContent.push(textContent || ''); // Add an empty string if textContent is falsy
     }
+    
+    // If the current index has no text but the previous index does, add the current image to the previous index
+    if (!textContent && articleData[prevIndex] && articleData[prevIndex].mediaSrc === mediaSrc) {
+        articleData[prevIndex].textContent.push('');
+    }
+
+    
+
 });
 
 
@@ -96,6 +121,8 @@ profileImage.style.marginTop = '10px';
 profileDiv.appendChild(profileImage);
 topDiv.appendChild(profileDiv);
 
+console.log(articleData);
+
 // Iterate through the article data and create HTML elements for each item
 articleData.forEach((item) => {
     // Create a new div element to hold the image and text
@@ -105,13 +132,24 @@ articleData.forEach((item) => {
     itemDiv.style.alignItems = 'center';
     itemDiv.style.marginBottom = '30px';
     
-    // Create a new image element and set its source
-    const imgElement = document.createElement('img');
-    imgElement.src = item.imageSrc;
-    imgElement.style.maxWidth = '100%';
-    imgElement.style.height = 'auto';
-    imgElement.style.marginBottom = '10px';
-    
+    // Creates the media element
+    let mediaElement;
+    if (item.mediaType === 'image') {
+        mediaElement = document.createElement('img');
+        mediaElement.src = item.mediaSrc;
+        mediaElement.style.width = '100%';
+        mediaElement.style.maxWidth = '800px';
+        mediaElement.style.height = 'auto';
+        mediaElement.style.marginBottom = '20px';
+    } else if (item.mediaType === 'video') {
+        mediaElement = document.createElement('video');
+        mediaElement.src = item.mediaSrc;
+        mediaElement.style.width = '100%';
+        mediaElement.style.maxWidth = '800px';
+        mediaElement.style.height = 'auto';
+        mediaElement.style.marginBottom = '20px';
+        mediaElement.controls = true;
+    }
     // Create a new div element to hold the text
     const textDiv = document.createElement('div');
     textDiv.style.textAlign = 'center';
@@ -120,14 +158,20 @@ articleData.forEach((item) => {
     item.textContent.forEach((text) => {
         const pElement = document.createElement('p');
         pElement.textContent = text;
+        console.log('itemDiv:', itemDiv);
+        console.log('mediaElement:', mediaElement);
+        console.log('textDiv:', textDiv);   
         textDiv.appendChild(pElement);
     });
     
-    // Add the image and text to the item div, and add the item div to the article div
-    itemDiv.appendChild(imgElement);
+    // Add the media element and text to the item div, and add the item div to the article div
+    
+    itemDiv.appendChild(mediaElement);
+    
     itemDiv.appendChild(textDiv);
     articleDiv.appendChild(itemDiv);
 });
+
 
 
 
