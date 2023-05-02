@@ -12,28 +12,28 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         // Loop through each image element and set its loading attribute to "eager"
         function setEagerLoading() {
             return new Promise((resolve) => {
-              let imagesLoaded = 0;
-          
-              function checkAndResolve() {
-                imagesLoaded++;
-                if (imagesLoaded === images.length) {
-                  resolve();
+                let imagesLoaded = 0;
+
+                function checkAndResolve() {
+                    imagesLoaded++;
+                    if (imagesLoaded === images.length) {
+                        resolve();
+                    }
                 }
-              }
-          
-              images.forEach((image, index) => {
-                image.setAttribute("loading", "eager");
-                if (image.complete) {
-                  checkAndResolve();
-                } else {
-                  image.addEventListener("load", () => {
-                    checkAndResolve();
-                  });
-                }
-              });
+
+                images.forEach((image, index) => {
+                    image.setAttribute("loading", "eager");
+                    if (image.complete) {
+                        checkAndResolve();
+                    } else {
+                        image.addEventListener("load", () => {
+                            checkAndResolve();
+                        });
+                    }
+                });
             });
-          }
-          
+        }
+
 
 
         async function getArticleData() {
@@ -206,11 +206,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             body.innerHTML = '';
             body.appendChild(topDiv);
             body.appendChild(articleDiv);
-            
+
         }
-        
+
         getArticleData();
-        
+
     }
 });
 
