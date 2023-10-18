@@ -37,19 +37,18 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 
         async function getArticleData() {
-            console.log('Getting article data...'); // Debugging output
 
             //Wait for set eager loading to finish
             await setEagerLoading();
 
             // Get all the article media elements
-            const articleMediaElements = document.querySelectorAll('.dhks-background img, .dhks-background > video:first-of-type');
+            const articleMediaElements = document.querySelectorAll('.dhks__background img, .dhks__background > video:first-of-type');
 
 
 
 
             // Get all the article text elements, including the title
-            const articleTextElements = document.querySelectorAll('.dhks-card .dhks-text, .dhks-content, .dhks-title, .dhks-lead, .dhks-author__name, dhks-author__role, dhks-publish__date');
+            const articleTextElements = document.querySelectorAll('.dhks__card .dhks__text, .dhks__content, .dhks__title, .dhks__lead, .dhks__author-name, dhks__author-role, dhks__publish-date');
 
             // Create an empty array to store the image, title, and text objects
             const articleData = [];
@@ -67,7 +66,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 // Check if the data-card-index has reset to 0
                 if (dataCardIndex === '0') {
                     currentIndex++;
-                    console.log('Current Index:', currentIndex); // Debugging output
                 }
 
                 // Get the corresponding media element and extract the src attribute
@@ -81,7 +79,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 const mediaSrc = mediaElement.tagName.toLowerCase() === 'img' ? mediaElement.currentSrc : mediaElement.querySelector('source[type="video/mp4"]').src;
 
 
-                console.log('Media Source:', mediaSrc); // Debugging output
 
 
                 // Get the text content and store it in the articleData array
@@ -147,7 +144,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             profileDiv.appendChild(profileImage);
             topDiv.appendChild(profileDiv);
 
-            console.log(articleData);
 
             // Iterate through the article data and create HTML elements for each item
             articleData.forEach((item) => {
@@ -184,9 +180,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 item.textContent.forEach((text) => {
                     const pElement = document.createElement('p');
                     pElement.textContent = text;
-                    console.log('itemDiv:', itemDiv);
-                    console.log('mediaElement:', mediaElement);
-                    console.log('textDiv:', textDiv);
                     textDiv.appendChild(pElement);
                 });
 
