@@ -1,12 +1,44 @@
-<!doctype html><html lang="en"><head><title>Fixture story</title></head><body>
+<!doctype html><html lang="nb"><head><meta charset="utf-8"><title>Fixture story</title>
+<!-- Trimmed from live NRK kortstokk markup (2026-11). Background <img>s have no
+     src: the real page fills them lazily, so the reader must use <source srcset>. -->
+<style>
+  /* Mimic NRK's stacked, sticky full-screen layout so later images are off-screen. */
+  .dhks__background { position: sticky; top: 0; height: 100vh; }
+  .dhks__background img { width: 100%; height: 100%; object-fit: cover; }
+  .dhks__card { position: relative; height: 100vh; }
+</style></head><body>
 <button id="original-button" onclick="this.textContent='Still working'">Original control</button>
-<main>
-<h1 class="dhks__title">A journey north</h1>
-<p class="dhks__lead">A quiet story about the coast.</p>
-<span class="dhks__author-name">Alex Example</span><span class="dhks__author-role">Photographer</span><time class="dhks__publish-date">2026-11-03</time>
-<div class="dhks__background"><img src="/image.svg" alt="A coastal landscape"></div>
-<div class="dhks__card" data-card-index="0"><div class="dhks__text"><p>First paragraph with <strong>emphasis</strong> and <a href="/source">a source</a>.</p><a href="javascript:alert(1)">Unsafe link</a><script>window.fixtureScriptRan = true;</script></div></div>
-<div class="dhks__card" data-card-index="1"><div class="dhks__text">Second paragraph, same scene.</div></div>
-<div class="dhks__background"><video poster="/image.svg"><source src="/clip.mp4" type="video/mp4"></video></div>
-<div class="dhks__card" data-card-index="0"><div class="dhks__text">Third paragraph, next scene.</div></div>
-</main></body></html>
+<dh-kortstokk-v1><main><article><kortstokk-app>
+<card-section class="dhks__section">
+  <div class="dhks__background | dhks__sticky dhks__fullscreen" data-background-id="0"><picture>
+    <source media="(min-aspect-ratio: 7/8)" type="image/webp" srcset="https://gfx.nrk.no/one-landscape-450 450w,https://gfx.nrk.no/one-landscape-1280 1280w" sizes="100vw" width="1280" height="800">
+    <source media="(max-aspect-ratio: 7/8)" type="image/webp" srcset="https://gfx.nrk.no/one-portrait-450 450w,https://gfx.nrk.no/one-portrait-1280 1280w" sizes="100vw" width="800" height="1280">
+    <img alt="A coastal landscape" loading="lazy" tabindex="-1"></picture>
+    <div class="dhks__credit" aria-hidden="true"><span></span></div></div>
+  <div class="dhks__card | dhks__intro-card" data-card-index=0 data-show-background="0"><div class="dhks__text dhks__content"><p>An intro before the title.</p></div></div>
+  <div class="dhks__card | dhks__cover-card" data-card-index=0>
+    <h1 class="dhks__title"><span class="balance-text">A journey north</span></h1>
+    <div class="dhks__cover-content"><p class="dhks__lead"><span class="balance-text">A quiet story about the coast.</span></p>
+      <div class="dhks__byline"><div class="dhks__authors"><a class="dhks__author" href="mailto:alex@nrk.no"><span class="dhks__author-name">Alex Example</span>&nbsp; <span class="dhks__author-role">Photographer</span></a><a class="dhks__author" href="mailto:sam@nrk.no"><span class="dhks__author-name">Sam Sample</span>&nbsp; <span class="dhks__author-role">Editor</span></a></div><div class="dhks__publish-date">Publisert: 03.11.2026</div></div></div>
+  </div>
+  <div class="dhks__sticky-reset"></div>
+</card-section>
+<card-section class="dhks__section">
+  <div class="dhks__background | dhks__sticky dhks__fullscreen" data-background-id="0"><picture>
+    <source media="(min-aspect-ratio: 7/8)" type="image/webp" srcset="https://gfx.nrk.no/two-landscape-450 450w,https://gfx.nrk.no/two-landscape-1280 1280w" sizes="100vw" width="1280" height="800">
+    <source media="(max-aspect-ratio: 7/8)" type="image/webp" srcset="https://gfx.nrk.no/two-portrait-450 450w,https://gfx.nrk.no/two-portrait-1280 1280w" sizes="100vw" width="800" height="1280">
+    <img alt="" loading="lazy" tabindex="-1"></picture></div>
+  <div class="dhks__card | dhks__text-card" data-card-index=0 data-show-background="0"><div class="dhks__text dhks__content fade-text"><p>First paragraph with <strong>emphasis</strong> and <a href="/source">a source</a>.</p><p>Second paragraph, same scene.</p><a href="javascript:alert(1)">Unsafe link</a><script>window.fixtureScriptRan = true;</script></div></div>
+  <div class="dhks__card | dhks__text-card" data-card-index=1 data-show-background="0"><div class="dhks__text dhks__content"><div>Block one</div><div>Block two</div></div></div>
+  <div class="dhks__background | dhks__sticky dhks__fullscreen" data-background-id="1"><picture>
+    <source media="(min-aspect-ratio: 7/8)" type="image/webp" srcset="https://gfx.nrk.no/three-landscape-450 450w,https://gfx.nrk.no/three-landscape-1280 1280w" sizes="100vw" width="1280" height="800">
+    <source media="(max-aspect-ratio: 7/8)" type="image/webp" srcset="https://gfx.nrk.no/three-portrait-450 450w,https://gfx.nrk.no/three-portrait-1280 1280w" sizes="100vw" width="800" height="1280">
+    <img alt="" loading="lazy" tabindex="-1"></picture></div>
+  <div class="dhks__card | dhks__quote-card" data-card-index=0 data-show-background="1"><div class="dhks__content"><blockquote><div class="dhks__quote"><p>«Forever owned is only what is lost»</p></div><footer>Henrik Ibsen</footer></blockquote></div></div>
+  <div class="dhks__background | dhks__sticky dhks__fullscreen" data-background-id="2"><video poster="/poster.jpg" muted><source src="/clip.mp4" type="video/mp4"></video></div>
+  <div class="dhks__card | dhks__text-card" data-card-index=0 data-show-background="2"><div class="dhks__text dhks__content"><p>Third paragraph, next scene.</p></div></div>
+  <div class="dhks__background | dhks__sticky" data-background-id="3"></div>
+  <footer class="dhks__card | dhks__colophon-card" role="contentinfo"><button class="dhks__share-button">Kopier lenke</button><div class="dhks__credits"><div>Ansvarlig redaktør: Someone</div></div></footer>
+</card-section>
+</kortstokk-app></article></main></dh-kortstokk-v1>
+</body></html>

@@ -15,22 +15,19 @@ local NRK-shaped fixtures routed to NRK URLs. Cover conversion, document order,
 missing/broken media, safe links, restoration, repeated actions, and popup states.
 Live NRK checks are separate from deterministic fixture coverage.
 
-## Validation results
+## Validation results (2026-11-03)
 
-- JavaScript syntax checks and `git diff --check`: passed.
-- Three automated unit tests: passed (host validation, popup success/error recovery,
-  missing content script feedback, manifest resources and translation coverage).
-- Additional local DOM smoke checks using an already-cached jsdom installation:
-  normal, nested, text-only and unsupported stories passed, including safe links,
-  deduplication and close/reopen behavior. These are not browser verification.
-- Playwright launch attempted with cached Playwright 1.63.0 and installed Chromium
-  149 (revision 1224). The sandbox killed Chromium before tests could execute:
-  `setsockopt: Operation not permitted`, followed by SIGTRAP. No browser test pass
-  or visual screenshot review is claimed. Standard setup installs Playwright's
-  matching browser; the cached executable override was used only in this session.
-- Live NRK HTTP access failed DNS resolution. Historical article text was readable
-  through web search, but current live DOM compatibility remains unverified.
-
-Review found nested content wrappers could swallow media/headings; a separate fix
-commit and a browser regression case cover this layout. The full browser suite
-must still run in a session that permits Chromium processes before release.
+- Browser suite now runs: 6/6 Playwright tests pass with the real unpacked extension
+  (Chromium, headless), stable across repeated runs; 3/3 unit tests pass.
+- The earlier session's two "pending" browser tests were broken: they read
+  `textContent` from the shadow host, which is always empty.
+- Live NRK check of both historical stories passed: every background produced a
+  figure and every image loaded after scrolling (Ibsen 40/40, Sunshine 19/19), with
+  quote attribution and a single byline.
+- Regression found and fixed: NRK background `<img>`s have no `src` in the HTML; the
+  URLs live in `<picture><source srcset>` and are filled lazily by the original page.
+  Reading `currentSrc` only worked for images Chrome happened to have loaded (Sunshine
+  lost 15 of 19). The reader now rebuilds the responsive `<picture>`.
+- The fixture was replaced with markup trimmed from the live pages; the new figure
+  count and lazy-load tests fail against the previous `content.js`.
+- Not verified: video backgrounds (neither reference story contains video).

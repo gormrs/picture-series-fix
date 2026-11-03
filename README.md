@@ -32,12 +32,13 @@ This repository's v1 changes have not been published there.
 
 ## Supported stories
 
-The extractor supports NRK's `dhks__` picture-series markup, including nested
-content containers, image/video backgrounds and text-only cards. It reads blocks
-in document order. It does not infer visual ordering from absolute positioning or
+The extractor walks NRK's `dhks__` picture-series markup in document order:
+backgrounds become responsive figures (rebuilt from `<picture>` sources, since the
+original page fills them lazily), the cover card becomes title, lead and byline,
+quote cards keep their attribution, and the colophon is skipped. It does not infer visual ordering from absolute positioning or
 support every NRK article format. Unsupported pages are left untouched.
 
-Historical examples (current live markup has not been verified for this release):
+Examples (live markup verified 2026-11-03):
 
 - https://www.nrk.no/norge/ibsens-skjulte-skattekammer-1.16329018
 - https://www.nrk.no/osloogviken/sunshine-effekten-1.16329137
@@ -60,7 +61,8 @@ so browser tests do not require live NRK access. The popup harness supplies the
 URL metadata normally granted by clicking the toolbar's `activeTab` action;
 content-script injection and messaging use real Chrome extension APIs.
 
-The browser suite covers conversion, nested content, safe links, repeat opening,
+The browser suite uses markup trimmed from live NRK pages and covers conversion,
+lazy `<picture>` media, quotes, bylines, safe links, repeat opening,
 restoration, missing media, unsupported sites, keyboard focus and narrow layouts.
 Screenshots are written to `test-results/` after successful browser checks.
 An existing compatible Chromium executable can be selected with
