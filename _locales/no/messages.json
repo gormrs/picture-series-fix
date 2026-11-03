@@ -1,10 +1,55 @@
 {
-    "appName":{
-        "message" : "PicArticleFix",
-        "description" : "Omgjør en bildeserie (fra NRK foreløpig) til en normal artikkel."
-    },
-    "appDesc": {
-        "message" : "Omgjør en bildeserie (fra NRK foreløpig) til en normal artikkel.",
-        "description" : "Omgjør en bildeserie (fra NRK foreløpig) til en normal artikkel."
-    }
+  "appName": {
+    "message": "PicArticleFix",
+    "description": "Omgjør en bildeserie (fra NRK foreløpig) til en normal artikkel."
+  },
+  "appDesc": {
+    "message": "Omgjør en bildeserie (fra NRK foreløpig) til en normal artikkel.",
+    "description": "Omgjør en bildeserie (fra NRK foreløpig) til en normal artikkel."
+  },
+  "readerTitle": {
+    "message": "Lesevisning"
+  },
+  "closeReader": {
+    "message": "Tilbake til originalen"
+  },
+  "mediaUnavailable": {
+    "message": "Mediet kunne ikke lastes. Du kan gå tilbake til originalartikkelen."
+  },
+  "popupHeading": {
+    "message": "En roligere leseopplevelse."
+  },
+  "popupDescription": {
+    "message": "Gjør en bildeserie fra NRK til en enkel artikkel du kan bla gjennom."
+  },
+  "openReader": {
+    "message": "Åpne lesevisning"
+  },
+  "checking": {
+    "message": "Sjekker denne siden …"
+  },
+  "privacyNote": {
+    "message": "Kjører på denne siden. Ingen analyse eller konto kreves."
+  },
+  "unsupportedSite": {
+    "message": "Åpne en bildeserie fra NRK for å bruke lesevisning."
+  },
+  "unsupportedArticle": {
+    "message": "Fant ingen støttet bildeserie på denne siden."
+  },
+  "reloadPage": {
+    "message": "Last artikkelen på nytt og åpne dette vinduet for å prøve igjen."
+  },
+  "ready": {
+    "message": "Klar. Du kan gå tilbake til originalen når som helst."
+  },
+  "converting": {
+    "message": "Åpner lesevisning …"
+  },
+  "readerOpened": {
+    "message": "Lesevisning er åpen. Trykk Escape i artikkelen for å gå tilbake."
+  },
+  "conversionFailed": {
+    "message": "Kunne ikke åpne lesevisning. Originalartikkelen er fortsatt tilgjengelig."
+  }
 }
