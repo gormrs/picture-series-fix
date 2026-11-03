@@ -1,33 +1,34 @@
 {
-    "name": "__MSG_appName__",
-    "version": "0.0.0.4",
-    "manifest_version": 3,
-    "default_locale": "no",
-    "description": "__MSG_appDesc__",
-    "icons": {
+  "name": "__MSG_appName__",
+  "version": "1.0.0",
+  "manifest_version": 3,
+  "default_locale": "no",
+  "description": "__MSG_appDesc__",
+  "icons": {
+    "128": "PAF.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "paf4.png",
+      "32": "paf3.png",
+      "48": "paf2.png",
       "128": "PAF.png"
     },
-    "background": {
-      "service_worker": "background.js",
-      "permissions": ["activeTab"]
-    },
-    "action": {
-      "default_popup": "popup.html",
-      "default_icon": {
-        "16": "paf4.png",
-        "32": "paf3.png",
-        "48": "paf2.png",
-        "128": "PAF.png"
-      }
-    },
-    "permissions": [
-      "activeTab"
-    ],
-    "content_scripts": [
-      {
-        "matches": ["https://*.nrk.no/*", "http://*.nrk.no/*"],
-        "js": ["content.js"]
-      }
-    ]
-  }
-  
+    "default_title": "__MSG_appName__"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.nrk.no/*",
+        "http://*.nrk.no/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ]
+}

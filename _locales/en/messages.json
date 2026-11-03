@@ -1,10 +1,49 @@
 {
-    "appName":{
-        "message" : "PicArticleFix",
-        "description" : "Convert a picture series (from NRK for now) into a regular article."
-    },
-    "appDesc": {
-        "message" : "Convert a picture series (from NRK for now) into a regular article.",
-        "description" : "Convert a picture series (from NRK for now) into a regular article."
-    }
+  "appName": {
+    "message": "PicArticleFix",
+    "description": "Convert a picture series (from NRK for now) into a regular article."
+  },
+  "appDesc": {
+    "message": "Convert a picture series (from NRK for now) into a regular article.",
+    "description": "Convert a picture series (from NRK for now) into a regular article."
+  },
+  "readerTitle": {
+    "message": "Reader view"
+  },
+  "closeReader": {
+    "message": "Back to original"
+  },
+  "mediaUnavailable": {
+    "message": "This media could not be loaded."
+  },
+  "popupDescription": {
+    "message": "Turn an NRK picture series into a simple, scrollable article."
+  },
+  "openReader": {
+    "message": "Open reader view"
+  },
+  "checking": {
+    "message": "Checking this page…"
+  },
+  "unsupportedSite": {
+    "message": "Open an NRK picture series to use reader view."
+  },
+  "unsupportedArticle": {
+    "message": "No supported picture series found on this page."
+  },
+  "reloadPage": {
+    "message": "Reload the article and reopen this popup to try again."
+  },
+  "ready": {
+    "message": "Ready."
+  },
+  "converting": {
+    "message": "Opening reader view…"
+  },
+  "readerOpened": {
+    "message": "Reader view is open. Press Escape to close it."
+  },
+  "conversionFailed": {
+    "message": "Could not open reader view."
+  }
 }
