@@ -35,7 +35,17 @@
   function extract() {
     if (!document.querySelector('.dhks__card, .dhks__background')) return [];
     const nodes = [...document.querySelectorAll(selector)];
-    return nodes.filter(node => !nodes.some(parent => parent !== node && parent.contains(node))).flatMap(node => {
+    function render(node) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        if (!node.textContent.trim()) return [];
+        const paragraph = document.createElement('p');
+        paragraph.textContent = node.textContent;
+        return [paragraph];
+      }
+      if (node.nodeType !== Node.ELEMENT_NODE) return [];
+      // Content containers can wrap titles, cards and backgrounds. Descend in
+      // document order so nested selectors neither duplicate text nor lose media.
+      if (node.querySelector(selector)) return [...node.childNodes].flatMap(render);
       if (node.matches('img, video')) {
         const src = safeURL(node.currentSrc || node.getAttribute('src') || node.querySelector('source')?.getAttribute('src') || node.getAttribute('data-src'));
         if (!src) return [];
@@ -59,7 +69,8 @@
       if (node.matches('.dhks__lead')) element.className = 'lead';
       if (node.matches('.dhks__author-name, .dhks__author-role, .dhks__publish-date')) element.className = 'metadata';
       return [element];
-    });
+    }
+    return nodes.filter(node => !nodes.some(parent => parent !== node && parent.contains(node))).flatMap(render);
   }
 
   function openReader() {
