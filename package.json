@@ -1,0 +1,19 @@
+{
+  "name": "picture-series-fix",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A reversible reader for NRK picture series",
+  "scripts": {
+    "test": "node --test --test-concurrency=1 tests/*.test.cjs",
+    "check": "node --check content.js && node --check popup.js",
+    "test:install": "playwright install chromium",
+    "test:unit": "node tests/popup.test.cjs",
+    "test:browser": "node tests/extension.test.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

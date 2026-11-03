@@ -42,7 +42,7 @@
         paragraph.textContent = node.textContent;
         return [paragraph];
       }
-      if (node.nodeType !== Node.ELEMENT_NODE) return [];
+      if (node.nodeType !== Node.ELEMENT_NODE || ['SCRIPT', 'STYLE', 'IFRAME', 'BUTTON', 'FORM'].includes(node.tagName)) return [];
       // Content containers can wrap titles, cards and backgrounds. Descend in
       // document order so nested selectors neither duplicate text nor lose media.
       if (node.querySelector(selector)) return [...node.childNodes].flatMap(render);
