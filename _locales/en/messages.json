@@ -14,10 +14,7 @@
     "message": "Back to original"
   },
   "mediaUnavailable": {
-    "message": "This media could not be loaded. You can return to the original article."
-  },
-  "popupHeading": {
-    "message": "A calmer way to read."
+    "message": "This media could not be loaded."
   },
   "popupDescription": {
     "message": "Turn an NRK picture series into a simple, scrollable article."
@@ -27,9 +24,6 @@
   },
   "checking": {
     "message": "Checking this page…"
-  },
-  "privacyNote": {
-    "message": "Runs on this page. No analytics or account required."
   },
   "unsupportedSite": {
     "message": "Open an NRK picture series to use reader view."
@@ -41,15 +35,15 @@
     "message": "Reload the article and reopen this popup to try again."
   },
   "ready": {
-    "message": "Ready. You can return to the original at any time."
+    "message": "Ready."
   },
   "converting": {
     "message": "Opening reader view…"
   },
   "readerOpened": {
-    "message": "Reader view is open. Press Escape in the article to return."
+    "message": "Reader view is open. Press Escape to close it."
   },
   "conversionFailed": {
-    "message": "Could not open reader view. Your original article is still available."
+    "message": "Could not open reader view."
   }
 }

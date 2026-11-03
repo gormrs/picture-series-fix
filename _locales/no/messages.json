@@ -14,10 +14,7 @@
     "message": "Tilbake til originalen"
   },
   "mediaUnavailable": {
-    "message": "Mediet kunne ikke lastes. Du kan gå tilbake til originalartikkelen."
-  },
-  "popupHeading": {
-    "message": "En roligere leseopplevelse."
+    "message": "Mediet kunne ikke lastes."
   },
   "popupDescription": {
     "message": "Gjør en bildeserie fra NRK til en enkel artikkel du kan bla gjennom."
@@ -27,9 +24,6 @@
   },
   "checking": {
     "message": "Sjekker denne siden …"
-  },
-  "privacyNote": {
-    "message": "Kjører på denne siden. Ingen analyse eller konto kreves."
   },
   "unsupportedSite": {
     "message": "Åpne en bildeserie fra NRK for å bruke lesevisning."
@@ -41,15 +35,15 @@
     "message": "Last artikkelen på nytt og åpne dette vinduet for å prøve igjen."
   },
   "ready": {
-    "message": "Klar. Du kan gå tilbake til originalen når som helst."
+    "message": "Klar."
   },
   "converting": {
     "message": "Åpner lesevisning …"
   },
   "readerOpened": {
-    "message": "Lesevisning er åpen. Trykk Escape i artikkelen for å gå tilbake."
+    "message": "Lesevisning er åpen. Trykk Escape for å lukke den."
   },
   "conversionFailed": {
-    "message": "Kunne ikke åpne lesevisning. Originalartikkelen er fortsatt tilgjengelig."
+    "message": "Kunne ikke åpne lesevisning."
   }
 }
