@@ -31,3 +31,9 @@ Live NRK checks are separate from deterministic fixture coverage.
 - The fixture was replaced with markup trimmed from the live pages; the new figure
   count and lazy-load tests fail against the previous `content.js`.
 - Not verified: video backgrounds (neither reference story contains video).
+
+## Rust port (2026-11-04, branch `rust-rewrite`)
+
+Extraction, rendering and the reader dialog moved to Rust/WebAssembly in `reader/`
+(built into `pkg/` by `npm run build`); `content.js` is a lazy loader and message relay.
+Unchanged test suite: 9/9 pass. Live NRK: Ibsen 40/40, Sunshine 19/19 images, 8 quotes.

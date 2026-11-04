@@ -24,7 +24,19 @@ underneath the reader, so this is not an ad blocker or a privacy isolation tool.
 4. Open an NRK picture series, then click the extension icon.
 
 After updating the files, reload the extension and refresh any already-open NRK
-pages. There is no build step and no runtime npm dependency.
+pages. The built reader in `pkg/` is committed, so loading unpacked needs no tools.
+
+## Rust reader
+
+The reader (extraction, rendering and the reader dialog) is written in Rust in
+`reader/` and compiled to WebAssembly. `content.js` is a small loader that passes
+localized strings and relays popup messages. To rebuild after changing Rust code:
+
+```sh
+rustup target add wasm32-unknown-unknown
+cargo install wasm-bindgen-cli --version 0.2.130 --locked   # must match Cargo.toml
+npm run build
+```
 
 The previous published version is available in the
 [Chrome Web Store](https://chrome.google.com/webstore/detail/picarticlefix/kgkaabedglfpocbpickbflcoejmmbeak).
@@ -79,7 +91,9 @@ original, open and close the reader, and verify both historical example stories.
 The content script is limited to HTTP(S) NRK pages. No background service worker,
 storage permission or access to other sites is required.
 
-- `content.js`: extraction, safe rendering and reader lifecycle.
+- `reader/`: Rust source for extraction, safe rendering and reader lifecycle.
+- `pkg/`: generated WebAssembly and glue (`npm run build`).
+- `content.js`: loads `pkg/` and relays popup messages.
 - `popup.html`, `popup.css`, `popup.js`: localized controls and status feedback.
 - `_locales/`: English and Norwegian messages.
 - `tests/`: deterministic fixtures and automated checks.

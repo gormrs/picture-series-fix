@@ -4,8 +4,9 @@
   "private": true,
   "description": "A reversible reader for NRK picture series",
   "scripts": {
+    "build": "./build.sh",
     "test": "node --test --test-concurrency=1 tests/*.test.cjs",
-    "check": "node --check content.js && node --check popup.js",
+    "check": "node --check content.js && node --check popup.js && node --check pkg/reader.js",
     "test:install": "playwright install chromium",
     "test:unit": "node tests/popup.test.cjs",
     "test:browser": "node tests/extension.test.cjs"
