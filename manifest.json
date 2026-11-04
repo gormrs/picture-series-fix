@@ -27,7 +27,19 @@
         "http://*.nrk.no/*"
       ],
       "js": [
+        "pkg/reader.js",
         "content.js"
+      ]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "pkg/reader_bg.wasm"
+      ],
+      "matches": [
+        "https://*.nrk.no/*",
+        "http://*.nrk.no/*"
       ]
     }
   ]
